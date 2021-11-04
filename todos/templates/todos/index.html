@@ -1,9 +1,15 @@
 {% if todolists_list %}
     <ul>
     {% for todolist in todolists_list %}
-        <li><a href="{% url 'todos:detail' todolist.id %}/"> {{ todolist.todolist_name }} </a> </li>
+        <li><a href="{% url 'todos:detail' todolist.id %}"> {{ todolist.todolist_name }} </a> </li>
     {% endfor %}
     </ul>
 {% else %}
     <p> No todolists are available </p>
 {% endif %}
+
+<form action="{% url 'todos:create_todolist' %}", method="post"> 
+    {% csrf_token %} 
+    <input type="text" name="todolist_name" id="todolist_name_input" placeholder="Todolist name..."/>
+    <input type="submit" value="Create"/>
+</form>

@@ -7,3 +7,9 @@
 {% else %}
     <p> No todos are available </p>
 {% endif %}
+
+<form action="{% url 'todos:create_todo' todolist_id %}", method="post"> 
+    {% csrf_token %} 
+    <input type="text" name="todo_text" id="todo_text_input" placeholder="Todo text..."/>
+    <input type="submit" value="Create"/>
+</form>
